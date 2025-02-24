@@ -9,5 +9,12 @@
       "use_env_variable": "DATABASE_URL",
       "dialect": "postgres",
       "dialectOptions": { "ssl": { "require": true, "rejectUnauthorized": false } }
+    },
+
+    "test": {
+        "dialect": "postgres",
+        "database": "members_only_test",
+        "username": "your_test_db_user",
+        "password": "your_test_db_password"
     }
   }
