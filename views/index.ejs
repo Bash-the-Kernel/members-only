@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Members Only</title>
+</head>
+<body>
+  <% if (user) { %>
+    <p>Welcome <%= user.firstName %>! <a href="/logout">Logout</a></p>
+    <% if (!user.memberStatus) { %>
+      <a href="/join-club">Become a Member</a>
+    <% } %>
+    <a href="/create-message">Create Message</a>
+  <% } else { %>
+    <a href="/sign-up">Sign Up</a> | <a href="/login">Login</a>
+  <% } %>
+
+  <h1>Messages</h1>
+  <% messages.forEach(message => { %>
+    <div>
+      <h3><%= message.title %></h3>
+      <p><%= message.text %></p>
+      <% if (user && user.memberStatus) { %>
+        <p>By <%= message.User.firstName %> <%= message.User.lastName %> on <%= message.timestamp.toLocaleString() %></p>
+      <% } %>
+      <% if (user && user.admin) { %>
+        <form action="/delete-message/<%= message.id %>" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      <% } %>
+    </div>
+  <% }) %>
+</body>
+</html>

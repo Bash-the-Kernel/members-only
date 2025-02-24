@@ -1,0 +1,13 @@
+{
+    "development": {
+      "dialect": "postgres",
+      "database": "members_only_dev",
+      "username": "your_username",
+      "password": "your_password"
+    },
+    "production": {
+      "use_env_variable": "DATABASE_URL",
+      "dialect": "postgres",
+      "dialectOptions": { "ssl": { "require": true, "rejectUnauthorized": false } }
+    }
+  }
