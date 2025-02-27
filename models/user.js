@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       password: { type: DataTypes.STRING, allowNull: false },
       memberStatus: { type: DataTypes.BOOLEAN, defaultValue: false },
       admin: { type: DataTypes.BOOLEAN, defaultValue: false }
-    });
+    }, {
+        tableName: 'users' // Explicit table name
+      });
     return User;
   };

@@ -1,20 +1,23 @@
 {
-    "development": {
-      "dialect": "postgres",
-      "database": "members_only_dev",
-      "username": "your_username",
-      "password": "your_password"
-    },
-    "production": {
-      "use_env_variable": "DATABASE_URL",
-      "dialect": "postgres",
-      "dialectOptions": { "ssl": { "require": true, "rejectUnauthorized": false } }
-    },
-
-    "test": {
-        "dialect": "postgres",
-        "database": "members_only_test",
-        "username": "your_test_db_user",
-        "password": "your_test_db_password"
-    }
+  "development": {
+    "username": "jemcwilliams",
+    "password": "Golodi45",
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "jemcwilliams",
+    "password": "Golodi45",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "jemcwilliams",
+    "password": "Golodi45",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
   }
+}

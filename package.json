@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "test": "cross-env NODE_ENV=test jest",
+    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
+    "postinstall": "sequelize db:migrate"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -26,6 +30,7 @@
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "nodemon": "^3.1.9",
+    "sequelize-cli": "^6.6.2",
     "supertest": "^7.0.0"
   }
 }
