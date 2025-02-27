@@ -14,10 +14,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "jemcwilliams",
-    "password": "Golodi45",
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "postgresql://members_only_postgre_user:KNsWbC4GLVI47Xz5ua5V4bwgvKd4fIhD@dpg-cv0dip23esus73e86c2g-a/members_only_postgre",
     "dialect": "postgres"
   }
 }
