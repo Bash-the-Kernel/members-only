@@ -14,7 +14,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "postgresql://postgres:PRKFsXvWVjTrtwnPOncebbxXBqCxzksF@caboose.proxy.rlwy.net:32084/railway",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres"
   }
 }
