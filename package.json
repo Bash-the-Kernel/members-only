@@ -7,7 +7,7 @@
     "dev": "nodemon ./bin/www",
     "test": "cross-env NODE_ENV=test jest",
     "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
-    "postinstall": "sequelize db:migrate"
+    "postinstall": "cross-env NODE_ENV=production sequelize db:migrate"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
