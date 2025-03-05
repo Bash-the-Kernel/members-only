@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const flash = require('connect-flash'); // Add this line
+const flash = require('connect-flash');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const path = require('path');
@@ -17,7 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // Session configuration
 app.use(session({
@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Flash messages middleware
-app.use(flash()); // Add this line
+app.use(flash());
 
 // Make flash messages available in all views
 app.use((req, res, next) => {
@@ -70,8 +70,8 @@ app.use('/', routes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error('Error:', err.message); // Log the error message
-  console.error('Stack:', err.stack);  // Log the full error stack trace
+  console.error('Error:', err.message);
+  console.error('Stack:', err.stack);
   res.status(500).send('Something broke!');
 });
 

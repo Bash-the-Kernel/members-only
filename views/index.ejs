@@ -2,41 +2,46 @@
 <html>
 <head>
   <title>Members Only</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <% if (success_msg) { %>
-    <p style="color: green;"><%= success_msg %></p>
-  <% } %>
-  <% if (error_msg) { %>
-    <p style="color: red;"><%= error_msg %></p>
-  <% } %>
-
-  <% if (user) { %>
-    <p>Welcome <%= user.firstName %>! <a href="/logout">Logout</a></p>
-    <% if (!user.memberStatus) { %>
-      <a href="/join-club">Become a Member</a>
+  <div class="main-content">
+    <% if (success_msg) { %>
+      <p style="color: green;"><%= success_msg %></p>
     <% } %>
-    <a href="/create-message">Create a New Message</a>
-  <% } else { %>
-    <a href="/sign-up">Sign Up</a> | <a href="/login">Login</a>
-  <% } %>
+    <% if (error_msg) { %>
+      <p style="color: red;"><%= error_msg %></p>
+    <% } %>
 
-  <h1>Messages</h1>
-  <% messages.forEach(message => { %>
-    <div>
-      <h3><%= message.title %></h3>
-      <p><%= message.text %></p>
-      <p>Posted on: <%= message.timestamp.toLocaleString() %></p> <!-- Display timestamp -->
-      <% if (user && user.memberStatus) { %>
-        <% if (message.User) { %>
-          <p>By <%= message.User.firstName %> <%= message.User.lastName %></p>
-        <% } else { %>
-          <p>By Anonymous</p>
-        <% } %>
-      <% } else { %>
-        <p>By Anonymous</p>
+    <% if (user) { %>
+      <p>Welcome <%= user.firstName %>! <a href="/logout">Logout</a></p>
+      <% if (!user.memberStatus) { %>
+        <a href="/join-club">Become a Member</a>
       <% } %>
+      <a href="/create-message">Create a New Message</a>
+    <% } else { %>
+      <a href="/sign-up">Sign Up</a> | <a href="/login">Login</a>
+    <% } %>
+
+    <h1>Messages</h1>
+    <div class="messages-container">
+      <% messages.forEach(message => { %>
+        <div class="message">
+          <h3><%= message.title %></h3>
+          <p><%= message.text %></p>
+          <p>Posted on: <%= message.timestamp.toLocaleString() %></p> <!-- Display timestamp -->
+          <% if (user && user.memberStatus) { %>
+            <% if (message.User) { %>
+              <p>By <%= message.User.firstName %> <%= message.User.lastName %></p>
+            <% } else { %>
+              <p>By Anonymous</p>
+            <% } %>
+          <% } else { %>
+            <p>By Anonymous</p>
+          <% } %>
+        </div>
+      <% }) %>
     </div>
-  <% }) %>
+  </div>
 </body>
 </html>
