@@ -17,10 +17,12 @@ router.get('/', handleAsyncErrors(async (req, res) => {
   const messages = await Message.findAll({ 
     include: {
       model: User,
-      attributes: ['firstName', 'lastName', 'memberStatus'] // Only include necessary fields
+      as: 'User', // Ensure the alias matches the association
+      attributes: ['firstName', 'lastName', 'memberStatus']
     },
-    order: [['timestamp', 'DESC']]
+    order: [['createdAt', 'DESC']]
   });
+  console.log('Fetched messages:', JSON.stringify(messages, null, 2)); // Debugging
   res.render('index', { user: req.user, messages });
 }));
 

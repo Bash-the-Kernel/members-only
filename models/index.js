@@ -42,7 +42,7 @@ const User = require('./user')(sequelize, Sequelize.DataTypes);
 const Message = require('./message')(sequelize, Sequelize.DataTypes);
 
 User.hasMany(Message, { foreignKey: 'userId' });
-Message.belongsTo(User, { foreignKey: 'userId' });
+Message.belongsTo(User, { foreignKey: 'userId', as: 'User' });
 
 db.User = User;
 db.Message = Message;
