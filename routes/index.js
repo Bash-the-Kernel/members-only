@@ -22,7 +22,6 @@ router.get('/', handleAsyncErrors(async (req, res) => {
     },
     order: [['createdAt', 'DESC']]
   });
-  console.log('Fetched messages:', JSON.stringify(messages, null, 2)); // Debugging
   res.render('index', { user: req.user, messages });
 }));
 
@@ -144,10 +143,11 @@ router.post('/create-message', ensureAuthenticated, [
     });
   }
 
+  console.log('Creating message with userId:', req.user.id); // Debugging
   await Message.create({
     title: req.body.title,
     text: req.body.text,
-    UserId: req.user.id
+    userId: req.user.id // Ensure the foreign key matches the association
   });
 
   req.flash('success', 'Message created successfully');
