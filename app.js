@@ -7,6 +7,8 @@ const bcrypt = require('bcryptjs');
 const path = require('path');
 const { User } = require('./models');
 const routes = require('./routes');
+const pgSession = require('connect-pg-simple')(session);
+const { Pool } = require('pg');
 
 const app = express();
 
@@ -19,8 +21,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
+// PostgreSQL pool for session store
+const pool = new Pool({
+  connectionString: process.env.DATABASE_PUBLIC_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
 // Session configuration
 app.use(session({
+  store: new pgSession({
+    pool: pool, // Connection pool
+    tableName: 'session' // Use a specific table for sessions
+  }),
   secret: process.env.SESSION_SECRET || 'your-secret-key-here',
   resave: false,
   saveUninitialized: false,
