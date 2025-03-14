@@ -101,6 +101,6 @@ Through this project, I've gained experience with:
 
 ## 🌐 Live Demo
 
-Check out the live demo of the application: [Members Only]([https://members-only-demo.herokuapp.com](https://members-only-production-e3d2.up.railway.app/))
+Check out the live demo of the application: [Members Only](https://members-only-production-e3d2.up.railway.app/)
 
 ## AI written function as part of the assignment: one function in index.js (routes)
