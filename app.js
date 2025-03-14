@@ -28,7 +28,6 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-
 // Session configuration
 app.use(session({
   store: new pgSession({
@@ -38,7 +37,10 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key-here',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: process.env.NODE_ENV === 'production' }
+  cookie: { 
+    secure: false, // Changed from process.env.NODE_ENV === 'production' to false
+    httpOnly: true
+  }
 }));
 
 // Passport configuration
