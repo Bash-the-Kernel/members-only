@@ -22,7 +22,8 @@ router.get('/', handleAsyncErrors(async (req, res) => {
     },
     order: [['createdAt', 'DESC']]
   });
-    res.render('index', { user: req.user, messages });
+  console.log('Fetched messages:', JSON.stringify(messages, null, 2)); // Debugging
+  res.render('index', { user: req.user, messages });
 }));
 
 // Sign-up form
@@ -71,11 +72,24 @@ router.get('/login', (req, res) => {
 
 // Process login
 router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: 'Invalid username or password',
-    successFlash: 'Welcome back!'
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      console.error('Login error:', err);
+      return next(err);
+    }
+    if (!user) {
+      req.flash('error', info.message);
+      return res.redirect('/login');
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        console.error('Login error:', err);
+        return next(err);
+      }
+      console.log('User logged in:', user);
+      req.flash('success', 'Welcome back!');
+      return res.redirect('/');
+    });
   })(req, res, next);
 });
 
