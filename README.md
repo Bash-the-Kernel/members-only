@@ -2,7 +2,7 @@
 
 A secure, exclusive message board application where only authenticated members can see message authors, while non-members can only view the message content. This project demonstrates user authentication, authorization, and secure database operations using modern web technologies.
 
-![Members Only Screenshot](https://placeholder-for-project-screenshot.com)
+![Members Only Screenshot](Screenshot_2025-03-13_23-21-01.png)
 
 ## 🛠️ Technologies Used
 
@@ -101,8 +101,6 @@ Through this project, I've gained experience with:
 
 ## 🌐 Live Demo
 
-Check out the live demo of the application: [Members Only](https://members-only-demo.herokuapp.com)
+Check out the live demo of the application: [Members Only]([https://members-only-demo.herokuapp.com](https://members-only-production-e3d2.up.railway.app/))
 
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+## AI written function as part of the assignment: one function in index.js (routes)
