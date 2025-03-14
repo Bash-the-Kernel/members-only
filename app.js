@@ -53,6 +53,8 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success');
   res.locals.error_msg = req.flash('error');
   res.locals.user = req.user || null; // Make user available in all views
+  console.log('Session:', req.session); // Debugging session
+  console.log('User:', req.user); // Debugging user
   next();
 });
 

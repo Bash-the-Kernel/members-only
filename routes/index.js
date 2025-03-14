@@ -22,7 +22,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
     },
     order: [['createdAt', 'DESC']]
   });
-  res.render('index', { user: req.user, messages });
+    res.render('index', { user: req.user, messages });
 }));
 
 // Sign-up form
