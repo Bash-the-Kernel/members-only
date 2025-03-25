@@ -185,6 +185,10 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
+//AI Written function (Claude) 
+//input: You are a junior dev and i am a Senior dev and
+//  i need you to write a function to determine if a user
+//  on my website is an admin or not
 function ensureAdmin(req, res, next) {
   if (req.user?.admin) {
     return next();

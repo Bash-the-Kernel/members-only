@@ -1,4 +1,4 @@
-{
+{/*
   "development": {
     "username": "jemcwilliams",
     "password": "Golodi45",
@@ -12,7 +12,7 @@
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
-  },
+  },*/
   "production": {
     "use_env_variable": "DATABASE_PUBLIC_URL",
     "dialect": "postgres",
